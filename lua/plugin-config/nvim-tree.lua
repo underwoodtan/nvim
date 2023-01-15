@@ -8,8 +8,24 @@ end
 local list_keys = require('keybindings').nvimTreeList
 nvim_tree.setup({
     -- 不显示 git 状态图标
+      diagnostics = {
+        enable = true,
+        show_on_dirs = false,
+        show_on_open_dirs = true,
+        debounce_delay = 50,
+        severity = {
+          min = vim.diagnostic.severity.HINT,
+          max = vim.diagnostic.severity.ERROR,
+        },
+        icons = {
+          hint = "",
+          info = "",
+          warning = "",
+          error = "",
+        },
+      },
     git = {
-        enable = false,
+        enable = true,
     },
     -- project plugin 需要这样设置
     update_cwd = true,
@@ -49,6 +65,9 @@ nvim_tree.setup({
             quit_on_open = true,
         },
     },
+  renderer = {
+    highlight_git = true,
+  },
 })
 -- 自动关闭
 vim.cmd([[
