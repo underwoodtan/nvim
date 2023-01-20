@@ -26,6 +26,12 @@ mason_config.setup({
 
 
 mason_config.setup_handlers ({
+  ["svls"] = function()
+    require("lspconfig")["svls"].setup{}
+  end,
+  ["pyright"] = function ()
+    require("lspconfig")["pyright"].setup{}
+  end,
 
   ["sumneko_lua"] = function()
     require("lsp.lua").on_setup()

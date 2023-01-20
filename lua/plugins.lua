@@ -23,14 +23,15 @@ packer.startup(
     use({ "neovim/nvim-lspconfig" })
     use({ 'onsails/lspkind.nvim' })
     use 'simrat39/rust-tools.nvim'
+    use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
     --------------------- DBG --------------------
     use 'mfussenegger/nvim-dap'
+    use { "rcarriga/nvim-dap-ui"}
     --------------------- CMP --------------------
     use({'ms-jpq/coq_nvim', branch = 'coq'})
     use({'ms-jpq/coq.artifacts'})
     --Make quick fix window better
     use({'kevinhwang91/nvim-bqf', ft = 'qf'})
-    use { "rcarriga/nvim-dap-ui"}
 
   end)
 
