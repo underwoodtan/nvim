@@ -13,6 +13,7 @@ packer.startup(
     use("lukas-reineke/indent-blankline.nvim")
     use {"windwp/nvim-autopairs",
       config = function() require("nvim-autopairs").setup {} end}
+    use({'ggandor/leap.nvim'})
     use({'nvim-lualine/lualine.nvim'})
     -------------------- START -------------------
     use {'glepnir/dashboard-nvim'}
