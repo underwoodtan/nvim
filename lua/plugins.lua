@@ -33,6 +33,7 @@ packer.startup(
     use({'ms-jpq/coq.artifacts'})
     --Make quick fix window better
     use({'kevinhwang91/nvim-bqf', ft = 'qf'})
+    --mark down support
 
   end)
 
