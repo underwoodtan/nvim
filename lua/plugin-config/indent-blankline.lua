@@ -1,10 +1,10 @@
-local status, ident_blankline = pcall(require, "indent_blankline")
+local status, indent_blankline = pcall(require, "indent_blankline")
 if not status then
   vim.notify("没有找到 indent_blankline")
   return
 end
 
-ident_blankline.setup({
+indent_blankline.setup({
   -- 空行占位
   space_char_blankline = " ",
   -- 用 treesitter 判断上下文

@@ -29,21 +29,14 @@ treesitter.setup({
   },
 })
 
--- 开启 Folding 模块
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
--- 默认不要折叠
--- https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
-vim.opt.foldlevel = 99
-
 -- telescope bug cause canot fold holp to fix in the future version
 --this is a tiny fix
-pcall(
-  vim.cmd,
-[[
-augroup fold_fix
-autocmd!
-autocmd BufRead * autocmd BufWinEnter * ++once normal! zx zR
-augroup end
-]]
-)
+--pcall(
+--  vim.cmd,
+--[[
+--augroup fold_fix
+--autocmd!
+--autocmd BufRead * autocmd BufWinEnter * ++once normal! zx zR
+--augroup end
+--]]
+--)

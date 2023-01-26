@@ -4,8 +4,13 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 local opts = {
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+
   settings = {
     Lua = {
+      completion = {
+        callSnippet = "Replace"
+      },
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
@@ -30,6 +35,7 @@ local opts = {
   flags = {
     debounce_text_changes = 150,
   },
+  on_attach = require("keybindings").mapLSP
 }
 -- 查看目录等信息
 return {

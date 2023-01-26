@@ -14,6 +14,7 @@ metals_config.settings = {
   showImplicitConversionsAndClasses = true,
   superMethodLensesEnabled = true
 }
+metals_config.on_attach = require("keybindings").mapLSP
 local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 -- Defaults
 metals_config.tvp = {

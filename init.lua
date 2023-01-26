@@ -12,8 +12,11 @@ require('plugin-config.dashboard')
 require('plugin-config.project')
 require('lsp.mason')
 require('lsp.rust-tools')
-require("plugin-config.coq_nvim")
 require("lsp.ui")
 require('plugin-config.dapui')
 require('lsp.metals-cfg')
+require('plugin-config.nvim-cmp')
 require('leap').add_default_mappings()
+require("fidget").setup{}
+--notice no color because of ts changes
+require("symbols-outline").setup()
