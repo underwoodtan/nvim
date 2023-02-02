@@ -5,7 +5,10 @@ local liblldb_path = path .. "lldb/lib/liblldb.so"
 
 rt.setup({
   server = {
-    on_attach = require("keybindings").mapRust
+    on_attach = function(client, bufnr)
+      require("keybindings").mapRust(client, bufnr)
+      client.server_capabilities.semanticTokensProvider = nil
+    end
   },
   -- ... other configs
   dap = {

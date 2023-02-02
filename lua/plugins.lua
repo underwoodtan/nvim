@@ -5,6 +5,7 @@ packer.startup(
     --colorscheme
     use("folke/tokyonight.nvim")
     use('tiagovla/tokyodark.nvim')
+    use { "catppuccin/nvim", as = "catppuccin" }
     --basic use
     use({ 'nvim-tree/nvim-tree.lua', requires = 'nvim-tree/nvim-web-devicons' })
     use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons"} })
@@ -38,7 +39,7 @@ packer.startup(
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
       setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
     -------------------- START -------------------
-    use {'glepnir/dashboard-nvim',commit = '88a6077'}
+    use ({'glepnir/dashboard-nvim'})
     use { 'ahmedkhalf/project.nvim' }
     --------------------- LSP --------------------
     use({ "williamboman/mason.nvim" })

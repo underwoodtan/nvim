@@ -21,7 +21,7 @@ mason.setup({
 })
 mason_config.setup({
   -- 确保安装，根据需要填写
-  ensure_installed = { "sumneko_lua", "clangd" },
+  ensure_installed = { "sumneko_lua", "clangd", "rust_analyzer", "pyright" },
 })
 
 -- Set up lspconfig.
@@ -43,8 +43,10 @@ mason_config.setup_handlers({
 
   ["clangd"] = function()
     require("lspconfig")["clangd"].setup {
-      capabilities = capabilities,
-      on_attach = require("keybindings").mapLSP
+      on_attach = function(client, bufnr)
+        require("keybindings").mapLSP(client, bufnr)
+        client.server_capabilities.semanticTokensProvider = nil
+      end
     }
   end,
 })
