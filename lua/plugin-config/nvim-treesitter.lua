@@ -7,7 +7,7 @@ end
 treesitter.setup({
   -- 安装 language parser
   -- :TSInstallInfo 命令查看支持的语言
-  ensure_installed = { "c", "cpp", "vim", "lua", "python", "rust" },
+  ensure_installed = { "c", "cpp", "vim", "lua", "python", "rust", "scala"},
   -- 启用代码高亮模块
   highlight = {
     enable = true,
@@ -28,15 +28,3 @@ treesitter.setup({
     enable = true,
   },
 })
-
--- telescope bug cause canot fold holp to fix in the future version
---this is a tiny fix
---pcall(
---  vim.cmd,
---[[
---augroup fold_fix
---autocmd!
---autocmd BufRead * autocmd BufWinEnter * ++once normal! zx zR
---augroup end
---]]
---)

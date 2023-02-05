@@ -11,42 +11,9 @@ if not statu_cfg then
 end
 
 mason.setup({
-  ui = {
-    icons = {
-      package_installed = "✓",
-      package_pending = "➜",
-      package_uninstalled = "✗",
-    },
-  },
 })
+
 mason_config.setup({
   -- 确保安装，根据需要填写
   ensure_installed = { "sumneko_lua", "clangd", "rust_analyzer", "pyright" },
-})
-
--- Set up lspconfig.
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-mason_config.setup_handlers({
-  ["pyright"] = function()
-    require("lspconfig")["pyright"].setup {
-      capabilities = capabilities,
-      on_attach = require("keybindings").mapLSP
-    }
-  end,
-
-  ["sumneko_lua"] = function()
-    require("lsp.lua").on_setup()
-  end,
-
-  ["clangd"] = function()
-    require("lspconfig")["clangd"].setup {
-      on_attach = function(client, bufnr)
-        require("keybindings").mapLSP(client, bufnr)
-        client.server_capabilities.semanticTokensProvider = nil
-      end
-    }
-  end,
 })

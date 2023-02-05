@@ -38,8 +38,4 @@ local opts = {
   on_attach = require("keybindings").mapLSP
 }
 -- 查看目录等信息
-return {
-  on_setup = function()
-    require("lspconfig")["sumneko_lua"].setup(opts)
-  end,
-}
+return opts
