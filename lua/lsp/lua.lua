@@ -3,10 +3,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-local opts = {
-  capabilities = require('cmp_nvim_lsp').default_capabilities(),
-
-  settings = {
+local  settings = {
     Lua = {
       completion = {
         callSnippet = "Replace"
@@ -21,21 +18,16 @@ local opts = {
         -- Get the language server to recognize the `vim` global
         globals = { 'vim' },
       },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file('', true),
-        checkThirdParty = false,
-      },
+      --workspace = {
+      --  -- Make the server aware of Neovim runtime files
+      --  library = vim.api.nvim_get_runtime_file('', true),
+      --  checkThirdParty = false,
+      --},
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {
         enable = false,
       },
     },
-  },
-  flags = {
-    debounce_text_changes = 150,
-  },
-  on_attach = require("keybindings").mapLSP
-}
+  }
 -- 查看目录等信息
-return opts
+return settings
