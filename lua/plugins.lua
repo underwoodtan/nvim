@@ -15,23 +15,15 @@ packer.startup(
     use { "windwp/nvim-autopairs" }
     use({ 'ggandor/leap.nvim' })
     use({ 'nvim-lualine/lualine.nvim' })
-    use {
-      "folke/which-key.nvim",
-      config = function()
-        vim.o.timeout = true
-        vim.o.timeoutlen = 300
-        require("which-key").setup {
-        }
-      end
-    }
+    use {"folke/which-key.nvim"}
     use { 'tpope/vim-surround', event = 'VimEnter' }
     use({ 'Wansmer/treesj', requires = { 'nvim-treesitter' },
       keys = { '<space>m', '<space>s', '<space>j' },
       config = function() require('treesj').setup({ --[[ your config ]] }) end, })
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
       setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-    use {'lewis6991/gitsigns.nvim'}
-    use {"akinsho/toggleterm.nvim", tag = '*'}
+    use { 'lewis6991/gitsigns.nvim' }
+    use { "akinsho/toggleterm.nvim", tag = '*' }
     -------------------- START -------------------
     use({ 'glepnir/dashboard-nvim' })
     use { 'ahmedkhalf/project.nvim' }
@@ -39,10 +31,13 @@ packer.startup(
       require("impatient")
     end }
     --------------------- LSP --------------------
-    use"RRethy/vim-illuminate"
+    use 'RRethy/vim-illuminate'
     use({ "williamboman/mason.nvim" })
     use({ "williamboman/mason-lspconfig.nvim" })
     use({ "neovim/nvim-lspconfig" })
+    use { "SmiteshP/nvim-navic" }
+    use { "ray-x/lsp_signature.nvim" }
+    use { "folke/trouble.nvim", requires = "nvim-tree/nvim-web-devicons"}
     use({ 'j-hui/fidget.nvim' })
     use { 'simrat39/symbols-outline.nvim', cmd = 'SymbolsOutline',
       config = function() require("symbols-outline").setup() end }

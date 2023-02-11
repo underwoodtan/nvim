@@ -14,7 +14,13 @@ require("lsp.lspconfig")
 require("lsp.mason")
 require("lsp.rust-tools")
 require("lsp.metals-cfg")
+require("lsp.navic")
 require("dapui").setup()
 require("nvim-autopairs").setup()
 require("fidget").setup()
+require("trouble").setup()
 require("gitsigns").setup()
+require("toggleterm").setup{
+direction = 'float'
+}
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
