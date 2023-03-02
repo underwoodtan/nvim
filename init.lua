@@ -1,18 +1,26 @@
 require('basic')
-require('keybindings')
 require('plugins')
 require("colorscheme")
-require("plugin-config.nvim-tree")
+require("keybindings")
 require("plugin-config.bufferline")
---exits extensions
 require("plugin-config.lualine")
---exits extensions
-require("plugin-config.telescope")
+require("plugin-config.nvim-tree")
+require("plugin-config.nvim-treesitter")
+require("plugin-config.indent-blankline")
 require("plugin-config.dashboard")
 require("plugin-config.project")
-require("plugin-config.nvim-treesitter")
-require("lsp.setup")
-require("lsp.cmp")
-require("lsp.ui")
-require("plugin-config.indent-blankline")
-require("metals_cfg")
+require("plugin-config.nvim-cmp")
+require("lsp.lspconfig")
+require("lsp.mason")
+require("lsp.rust-tools")
+require("lsp.metals-cfg")
+require("lsp.navic")
+require("dapui").setup()
+require("nvim-autopairs").setup()
+require("fidget").setup()
+require("trouble").setup()
+require("gitsigns").setup()
+require("toggleterm").setup{
+direction = 'float'
+}
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"

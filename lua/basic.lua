@@ -53,9 +53,9 @@ vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
 -- smaller updatetime
-vim.o.updatetime = 300
+--vim.o.updatetime = 300
 -- 设置 timeoutlen 为等待键盘快捷键连击时间500毫秒，可根据需要设置
-vim.o.timeoutlen = 500
+--vim.o.timeoutlen = 500
 -- split window 从下边和右边出现
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -78,3 +78,15 @@ vim.o.pumheight = 10
 vim.o.showtabline = 2
 -- 使用增强状态栏插件后不再需要 vim 的模式提示
 vim.o.showmode = false
+-- vim.opt.foldmethod     = 'expr'
+-- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+vim.opt.foldlevel = 99
+---WORKAROUND
+vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
+  group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
+  callback = function()
+    vim.opt.foldmethod     = 'expr'
+    vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+  end
+})
+---ENDWORKAROUND
