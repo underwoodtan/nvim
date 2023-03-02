@@ -15,5 +15,5 @@ mason.setup({
 
 mason_config.setup({
   -- 确保安装，根据需要填写
-  ensure_installed = { "sumneko_lua", "clangd", "rust_analyzer", "pyright" },
+  ensure_installed = { "lua_ls", "clangd", "rust_analyzer", "pyright" },
 })

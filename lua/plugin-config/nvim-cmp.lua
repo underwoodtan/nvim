@@ -66,7 +66,8 @@ cmp.setup({
     -- end of super Tab
   },
   -- 使用lspkind-nvim显示类型图标 (新增)
-  formatting = require('lsp.ui')
+  formatting = require('lsp.ui'),
+---  preselect = require('cmp.types').cmp.PreselectMode.None,
 })
 
 -- / 查找模式使用 buffer 源

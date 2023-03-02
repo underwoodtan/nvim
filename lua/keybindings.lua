@@ -4,7 +4,8 @@ which_key.register({
   h = { "split" },
   d = { "close this windows" },
   o = { "close others windows" },
-  c = { "close buffer" }
+  c = { "close buffer" },
+  a = { "translate" }
 }, { prefix = "s" })
 
 which_key.register({
@@ -54,6 +55,7 @@ vim.g.maplocalleader = " "
 --Normal
 -- 取消 s 默认功能
 map("n", "s", "", opt)
+map("n", "sa", ":Translate<CR>", opt)
 -- windows 分屏快捷键
 map("n", "sv", ":vsp<CR>", opt)
 map("n", "sh", ":sp<CR>", opt)

@@ -1,8 +1,7 @@
 
+local on_attach = require("keybindings")
 local metals_config = require("metals").bare_config()
---local api = vim.api
---local cmd = vim.cmd
---local map = vim.keymap.set
+vim.keymap.set('n', 'H', vim.lsp.buf.hover, {})
 vim.opt_global.shortmess:remove("F")
 ---It's highly recommended to set your `statusBarProvider` to `on`. This
 ---enables `metals/status` and also other helpful messages that are shown to you.
@@ -14,7 +13,6 @@ metals_config.settings = {
   showImplicitConversionsAndClasses = true,
   superMethodLensesEnabled = true
 }
-metals_config.on_attach = require("keybindings")
 local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 -- Defaults
 metals_config.tvp = {
