@@ -10,7 +10,8 @@ local on_attach = function(client, bufnr)
       bind = true, -- This is mandatory, otherwise border config won't get registered.
       handler_opts = {
           border = "rounded"
-      }
+      },
+      hint_prefix = "",
   }, bufnr)
   navic.attach(client, bufnr)
 end
@@ -33,8 +34,12 @@ lspconfig['clangd'].setup {
     on_attach = on_attach,
     flags = lsp_flags,
 }
-lspconfig['sumneko_lua'].setup {
+lspconfig['lua_ls'].setup {
     on_attach = on_attach,
     flags = lsp_flags,
     settings = require("lsp.lua"),
+}
+lspconfig['metals'].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
 }

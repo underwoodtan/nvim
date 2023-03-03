@@ -7,18 +7,25 @@ local navic = require("nvim-navic")
 
 rt.setup({
   server = {
-      on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-        navic.attach(client, bufnr)
-        client.server_capabilities.semanticTokensProvider = nil
-        vim.keymap.set("n", "H", rt.hover_actions.hover_actions, { buffer = bufnr })
-        -- Code action groups
-        vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-      end
+    on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      navic.attach(client, bufnr)
+      client.server_capabilities.semanticTokensProvider = nil
+      require "lsp_signature".on_attach({
+        bind = true, -- This is mandatory, otherwise border config won't get registered.
+        handler_opts = {
+            border = "rounded"
+        },
+      hint_prefix = "",
+      }, bufnr)
+      vim.keymap.set("n", "H", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end
   },
   -- ... other configs
   dap = {
-      adapter = require('rust-tools.dap').get_codelldb_adapter(
-          codelldb_path, liblldb_path)
+    adapter = require('rust-tools.dap').get_codelldb_adapter(
+        codelldb_path, liblldb_path)
   }
 })

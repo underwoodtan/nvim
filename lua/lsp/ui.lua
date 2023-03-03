@@ -48,6 +48,11 @@ formatting.format = function(entry, vim_item)
     nvim_lua = "[Lua]",
     latex_symbols = "[LaTeX]",
   })[entry.source.name]
+  local label = vim_item.abbr
+  local truncated_label = vim.fn.strcharpart(label, 0, 40)
+  if truncated_label ~= label then
+    vim_item.abbr = truncated_label .. "..."
+  end
   return vim_item
 end
 

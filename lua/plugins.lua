@@ -4,6 +4,7 @@ packer.startup(
     use 'wbthomason/packer.nvim'
     --colorscheme
     use('tiagovla/tokyodark.nvim')
+    use "EdenEast/nightfox.nvim" -- Packer
     --use("folke/tokyonight.nvim")
     --use { "catppuccin/nvim", as = "catppuccin" }
     --basic use
@@ -23,7 +24,13 @@ packer.startup(
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
       setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
     use { 'lewis6991/gitsigns.nvim' }
+    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
     use { "akinsho/toggleterm.nvim", tag = '*' }
+    use 'mbbill/undotree'
+    use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
+    use { "AckslD/nvim-neoclip.lua", config = function() require('neoclip').setup() end }
+    use {'rcarriga/nvim-notify'}
+    use 'voldikss/vim-translator'
     -------------------- START -------------------
     use({ 'glepnir/dashboard-nvim' })
     use { 'ahmedkhalf/project.nvim' }
@@ -43,6 +50,7 @@ packer.startup(
       config = function() require("symbols-outline").setup() end }
     use { 'simrat39/rust-tools.nvim' }
     use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
+    use { 'saecki/crates.nvim', event = { "BufRead Cargo.toml" },config = function() require('crates').setup() end}
     --------------------- DBG --------------------
     use 'mfussenegger/nvim-dap'
     use({ "rcarriga/nvim-dap-ui" })
