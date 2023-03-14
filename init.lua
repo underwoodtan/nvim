@@ -1,26 +1,17 @@
-require('basic')
-require('plugins')
-require("colorscheme")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+require("basic")
 require("keybindings")
-require("plugin-config.bufferline")
-require("plugin-config.lualine")
-require("plugin-config.nvim-tree")
-require("plugin-config.nvim-treesitter")
-require("plugin-config.indent-blankline")
-require("plugin-config.dashboard")
-require("plugin-config.project")
-require("plugin-config.nvim-cmp")
-require("lsp.lspconfig")
-require("lsp.mason")
-require("lsp.rust-tools")
---require("lsp.metals-cfg")
-require("lsp.navic")
-require("dapui").setup()
-require("nvim-autopairs").setup()
-require("fidget").setup()
-require("trouble").setup()
-require("gitsigns").setup()
-require("toggleterm").setup{
-direction = 'float'
-}
-vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+require("lazy").setup({
+  import = "plugins"
+})
