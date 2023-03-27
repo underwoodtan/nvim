@@ -15,7 +15,7 @@ return {
   },
   {
     "tpope/vim-surround",
-    event = "VeryLazy",
+    keys = { { "cs" }, { "cS" } }
   },
   {
     "folke/which-key.nvim",
@@ -100,12 +100,6 @@ return {
     },
   },
   {
-    "moll/vim-bbye",
-    keys = {
-      { "sc", "<cmd>Bdelete<CR>", desc = "Delete buffer" },
-    },
-  },
-  {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd          = "Telescope",
@@ -115,6 +109,9 @@ return {
       { "<C-p>", "<cmd>Telescope find_files<CR>", desc = "" },
       { "<C-c>", "<cmd>Telescope commands<CR>",   desc = "" },
     },
+    config       = function()
+      require('telescope').load_extension('projects')
+    end,
     opts         = {
       defaults = {
         prompt_prefix = " ",
@@ -182,7 +179,9 @@ return {
   {
     'ahmedkhalf/project.nvim',
     config = function()
-      require("project_nvim").setup {}
+      require("project_nvim").setup {
+        detection_methods = { "pattern" },
+      }
     end
   },
   {
@@ -192,9 +191,21 @@ return {
     'numToStr/Comment.nvim',
     opts = {},
     keys = {
-      {"gcc",desc = "comment with line mode"},
-      {"gbc",desc = "comment with block mode"}
+      { "gcc", desc = "comment with line mode" },
+      { "gbc", desc = "comment with block mode" }
     }
+  },
+  -- session management
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help", "globals" } },
+    -- stylua: ignore
+    keys = {
+      { "<leader>qs", function() require("persistence").load() end,                desc = "Restore Session" },
+      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+      { "<leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
+    },
   },
   {
     'lewis6991/impatient.nvim'

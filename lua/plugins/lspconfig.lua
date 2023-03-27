@@ -4,7 +4,7 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+      { "folke/neoconf.nvim", cmd = "Neoconf",                                config = true },
       { "folke/neodev.nvim",  opts = { experimental = { pathStrict = true } } },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -58,5 +58,37 @@ return {
     opts = {
       ensure_installed = { "lua_ls", "clangd", "rust_analyzer", "pyright" }
     }
+  },
+  {
+    'scalameta/nvim-metals',
+    dependencies = { "nvim-lua/plenary.nvim" },
+    ft = "scala",
+    config = function()
+      local metals_config = require("metals").bare_config()
+      metals_config.settings = {
+        showImplicitArguments = true,
+        excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
+      }
+      metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- Autocmd that will actually be in charging of starting the whole thing
+      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "scala", "sbt", "java" },
+        callback = function()
+          require("metals").initialize_or_attach(metals_config)
+        end,
+        group = nvim_metals_group,
+      })
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local buffer = args.buf
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          local keys = require("keys")
+          local navic = require("nvim-navic")
+          navic.attach(client, buffer)
+          keys(client, buffer)
+        end,
+      })
+    end,
   },
 }

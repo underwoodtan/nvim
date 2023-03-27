@@ -1,7 +1,7 @@
 return {
   {
     'simrat39/rust-tools.nvim',
-    event = { "BufRead *.rs" },
+    ft = "rust",
     dependencies = {
       'neovim/nvim-lspconfig',
       'nvim-lua/plenary.nvim',

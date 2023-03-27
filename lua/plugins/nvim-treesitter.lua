@@ -5,7 +5,7 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		---@type TSConfig
 		opts = {
-			ensure_installed = { "c", "cpp", "vim", "lua", "python", "rust", "scala" },
+			ensure_installed = { "c", "cpp", "vim", "lua", "python", "rust", "scala", "markdown" },
 			-- 启用代码高亮模块
 			highlight = {
 				enable = true,

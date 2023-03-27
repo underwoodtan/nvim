@@ -73,7 +73,7 @@ return {
             end,
           },
         },
-        extensions = { "neo-tree" },
+        extensions = { "nvim-tree" },
       }
     end,
   },
