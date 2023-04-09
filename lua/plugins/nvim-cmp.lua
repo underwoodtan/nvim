@@ -83,6 +83,7 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
+          { name = "creats"},
         }),
         formatting = {
           format = function(_, item)

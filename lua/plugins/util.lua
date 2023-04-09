@@ -163,11 +163,15 @@ return {
     'voldikss/vim-translator',
     keys = {
       { "sa", ":Translate<CR>", "translate" }
-    }
+    },
+    config = function ()
+      vim.cmd([[let g:translator_defult_engines=['bing'] ]])
+    end
   },
   {
     'saecki/crates.nvim',
     event = { "BufRead Cargo.toml" },
+    opts = {},
   },
   {
     'simrat39/symbols-outline.nvim',
