@@ -111,7 +111,7 @@ return {
     },
     config       = function()
       require('telescope').load_extension('projects')
-      require("telescope").load_extension("noice")
+      require("telescope").load_extension("notify")
     end,
     opts         = {
       defaults = {
@@ -163,16 +163,15 @@ return {
   {
     'voldikss/vim-translator',
     keys = {
-      { "sa", ":Translate<CR>", "translate" }
+      { "sa", "<cmd>Translate<CR>", "translate" }
     },
     config = function ()
-      vim.cmd([[let g:translator_defult_engines=['bing'] ]])
+      vim.cmd([[let g:translator_default_engines=['bing'] ]])
     end
   },
   {
     'saecki/crates.nvim',
     event = { "BufRead Cargo.toml" },
-    opts = {},
   },
   {
     'simrat39/symbols-outline.nvim',
