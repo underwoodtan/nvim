@@ -172,6 +172,8 @@ return {
   {
     'saecki/crates.nvim',
     event = { "BufRead Cargo.toml" },
+    dependencies = {"nvim-lua/plenary.nvim"},
+    opts = {}
   },
   {
     'simrat39/symbols-outline.nvim',
@@ -213,5 +215,9 @@ return {
   },
   {
     'lewis6991/impatient.nvim'
+  },
+  {
+    "ludovicchabant/vim-gutentags",
+    ft = "verilog",
   },
 }
