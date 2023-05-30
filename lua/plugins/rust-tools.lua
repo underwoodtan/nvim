@@ -2,6 +2,7 @@ return {
   {
     'simrat39/rust-tools.nvim',
     ft = "rust",
+    event = "BufReadPre",
     dependencies = {
       'neovim/nvim-lspconfig',
       'nvim-lua/plenary.nvim',
@@ -30,6 +31,11 @@ return {
         dap = {
           adapter = require('rust-tools.dap').get_codelldb_adapter(
             codelldb_path, liblldb_path)
+        },
+        tools = {
+          inlay_hints = {
+            auto = false
+          }
         }
       })
     end

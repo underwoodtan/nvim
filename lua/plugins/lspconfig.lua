@@ -25,10 +25,12 @@ return {
       local servers = { "lua_ls", "clangd", "pyright" }
       local lspconfig = require("lspconfig")
       local navic = require("nvim-navic")
+      local inlayhint = require("lsp-inlayhints")
       local keys = require("keys")
       local on_attach = function(client, bufnr)
         keys(client, bufnr)
         navic.attach(client, bufnr)
+        inlayhint.on_attach(client,bufnr,false)
       end
       -- diagnostics
       for name, icon in pairs(require("icons").diagnostics) do
@@ -42,6 +44,9 @@ return {
           on_attach = on_attach,
         }
       end
+      lspconfig.verible.setup {
+        on_attach = on_attach,
+      }
     end,
   },
 
