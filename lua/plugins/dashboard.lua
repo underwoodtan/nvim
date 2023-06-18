@@ -33,7 +33,7 @@ return {
 						action = "Telescope oldfiles",
 					},
 					{
-						icon = "  ",
+						icon = "󰌌  ",
 						desc = "Edit keybindings                    ",
 						action = "edit ~/.config/nvim/lua/keybindings.lua",
 					},
@@ -43,12 +43,12 @@ return {
 						action = "edit ~/.local/share/nvim/project_nvim/project_history",
 					},
 					{
-						icon = "  ",
+						icon = "󰈞  ",
 						desc = "Find file                           ",
 						action = "Telescope find_files",
 					},
 					{
-						icon = "  ",
+						icon = "󰦨  ",
 						desc = "Find text                           ",
 						action = "Telescopecope live_grep",
 					},
