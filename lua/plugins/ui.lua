@@ -67,6 +67,14 @@ return {
     "folke/noice.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     opts = {
+      views = {
+        hover = {
+          size = {
+            max_width = 75,
+            max_hight = 20
+          }
+        }
+      },
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
