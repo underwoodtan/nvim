@@ -7,7 +7,7 @@ An awsome neovim config. Which you can use it or just as a reference to make you
   git clone https://github.com/underwoodtan/nvim.git
   
   //optional
-  rm -rf ~/.config/nvim.git
+  rm -rf ~/.config/nvim/.git
 ```
 
 ## feature
