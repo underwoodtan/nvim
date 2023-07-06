@@ -165,14 +165,14 @@ return {
     keys = {
       { "sa", "<cmd>Translate<CR>", "translate" }
     },
-    config = function ()
+    config = function()
       vim.cmd([[let g:translator_default_engines=['bing'] ]])
     end
   },
   {
     'saecki/crates.nvim',
     event = { "BufRead Cargo.toml" },
-    dependencies = {"nvim-lua/plenary.nvim"},
+    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {}
   },
   {

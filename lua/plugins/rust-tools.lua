@@ -38,6 +38,9 @@ return {
           }
         }
       })
-    end
+    end,
+    keys = {
+      { "<leader>a", desc = "Code action" },
+    }
   }
 }
