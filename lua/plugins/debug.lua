@@ -50,7 +50,7 @@ return {
     "rcarriga/nvim-dap-ui",
     opts = {},
     keys = {
-      { "<leader>d", function () require("dapui").toggle() end, desc = "Next trouble/quickfix item" }
+      { "<leader>d", function () require("dapui").toggle() end, desc = "Toggle Dap UI" }
     }
   },
 }
