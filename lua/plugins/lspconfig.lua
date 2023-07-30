@@ -61,7 +61,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     lazy = "VeryLazy",
     opts = {
-      ensure_installed = { "lua_ls", "clangd", "rust_analyzer", "pyright" }
+      ensure_installed = { "lua_ls", "clangd", "rust_analyzer", "pyright", "codelldb" }
     }
   },
   {
