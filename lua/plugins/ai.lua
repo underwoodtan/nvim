@@ -1,10 +1,10 @@
 return {
   {
     "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
+    cmd = "ChatGpt",
     config = function()
       require("chatgpt").setup({
-        api_key_cmd = "echo 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"
+        api_key_cmd = ""
       })
     end,
     dependencies = {

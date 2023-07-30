@@ -7,7 +7,7 @@ return {
 				--tab number
 				numbers = "ordinal",
 				diagnostics = "nvim_lsp",
-				always_show_bufferline = false,
+				-- always_show_bufferline = false,
 				---@diagnostic disable-next-line: unused-local
 				diagnostics_indicator = function(count, level, diagnostics_dict, context)
 					local s = " "
