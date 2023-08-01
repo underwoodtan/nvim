@@ -44,9 +44,6 @@ return {
           on_attach = on_attach,
         }
       end
-      lspconfig.verible.setup {
-        on_attach = on_attach,
-      }
     end,
   },
 
