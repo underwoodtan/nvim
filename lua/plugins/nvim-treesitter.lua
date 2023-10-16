@@ -3,9 +3,8 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
-		---@type TSConfig
 		opts = {
-			ensure_installed = { "c", "cpp", "vim", "lua", "python", "rust", "scala", "markdown" },
+			ensure_installed = { "bash", "make", "c", "cpp", "vim", "lua", "python", "rust", "scala", "markdown" },
 			-- 启用代码高亮模块
 			highlight = {
 				enable = true,

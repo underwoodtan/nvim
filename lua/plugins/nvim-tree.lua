@@ -64,9 +64,6 @@ return {
           width = 40,
           -- 也可以 'right'
           side = "right",
-          -- 隐藏根目录
-          hide_root_folder = false,
-          -- 自定义列表中快捷键
           -- 不显示行数
           number = false,
           relativenumber = false,

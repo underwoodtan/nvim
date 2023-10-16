@@ -22,7 +22,7 @@ return {
     },
     ---@param opts PluginLspOpts
     config = function(_, opts)
-      local servers = { "lua_ls", "clangd", "pyright" }
+      local servers = { "lua_ls", "clangd", "pyright", "zls" }
       local lspconfig = require("lspconfig")
       local navic = require("nvim-navic")
       local inlayhint = require("lsp-inlayhints")
@@ -30,7 +30,7 @@ return {
       local on_attach = function(client, bufnr)
         keys(client, bufnr)
         navic.attach(client, bufnr)
-        inlayhint.on_attach(client,bufnr,false)
+        inlayhint.on_attach(client, bufnr, false)
       end
       -- diagnostics
       for name, icon in pairs(require("icons").diagnostics) do
@@ -64,7 +64,6 @@ return {
   {
     'scalameta/nvim-metals',
     dependencies = { "nvim-lua/plenary.nvim" },
-    ft = "scala",
     config = function()
       local metals_config = require("metals").bare_config()
       metals_config.settings = {

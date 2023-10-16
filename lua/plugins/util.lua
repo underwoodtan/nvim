@@ -74,7 +74,8 @@ return {
       { "<C-p>", "<cmd>Telescope find_files<CR>", desc = "" },
       { "<C-c>", "<cmd>Telescope commands<CR>",   desc = "" },
     },
-    config       = function()
+    config       = function(_,opts)
+      require("telescope").setup(opts)
       require('telescope').load_extension('projects')
       require("telescope").load_extension("notify")
     end,
