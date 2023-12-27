@@ -73,11 +73,13 @@ return {
       { "<C-f>", "<cmd>Telescope live_grep<CR>",  desc = "" },
       { "<C-p>", "<cmd>Telescope find_files<CR>", desc = "" },
       { "<C-c>", "<cmd>Telescope commands<CR>",   desc = "" },
+      { "<M-p>", "<cmd>Telescope ctags_outline<CR>",   desc = "" },
     },
     config       = function(_,opts)
       require("telescope").setup(opts)
       require('telescope').load_extension('projects')
       require("telescope").load_extension("notify")
+      require("telescope").load_extension("ctags_outline")
     end,
     opts         = {
       defaults = {
@@ -99,7 +101,14 @@ return {
           },
         },
       },
-    }
+      extensions = {
+        ctags_outline = {
+          ft_opt = {
+            verilog = '--verilog-kinds=i'
+          },
+        },
+      }
+    },
   },
   {
     'Wansmer/treesj',
@@ -184,7 +193,10 @@ return {
   },
   {
     "ludovicchabant/vim-gutentags",
-    ft = "verilog",
+    config = function ()
+      vim.g.gutentags_ctags_tagfile = ".tags"
+      vim.g.gutentags_cache_dir =  "/home/txz/.cache/tags"
+    end
   },
   {
     "nvim-neorg/neorg",
@@ -206,5 +218,8 @@ return {
         },
       }
     end,
+  },
+  {
+    "fcying/telescope-ctags-outline.nvim",
   },
 }

@@ -4,7 +4,7 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      ensure_installed = { "bash", "make", "c", "cpp", "vim", "lua", "python", "rust", "scala", "markdown" },
+      ensure_installed = { "bash", "make", "c", "cpp", "vim", "lua", "python", "rust", "scala", "markdown", "vimdoc" },
       -- 启用代码高亮模块
       highlight = {
         enable = true,
