@@ -58,7 +58,25 @@ return {
     "williamboman/mason-lspconfig.nvim",
     event = "VeryLazy",
     opts = {
-      ensure_installed = { "lua_ls", "clangd", "rust_analyzer", "pyright" }
+      ensure_installed = {}
+    }
+  },
+  {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    opts = {
+      -- a list of all tools you want to ensure are installed upon
+      -- start
+      ensure_installed = {
+        "lua_ls",
+        "clangd",
+        "rust_analyzer",
+        "pyright",
+        "codelldb"
+      },
+      auto_update = true,
+      run_on_start = true,
+      start_delay = 3000,  -- 3 second delay
+      debounce_hours = 0, -- at least 5 hours between attempts to install/update
     }
   },
   {
@@ -80,7 +98,8 @@ return {
         end,
         group = nvim_metals_group,
       })
-      vim.api.nvim_create_autocmd("LspAttach", {
+      vim.api.nvim_create_autocmd({ "FileType", "LspAttach" }, {
+        pattern = { "scala", "sbt", "java" },
         callback = function(args)
           local buffer = args.buf
           local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -92,4 +111,27 @@ return {
       })
     end,
   },
+  {
+    'mrcjkb/rustaceanvim',
+    dependencies = "mattn/webapi-vim",
+    ft = { 'rust' },
+    config = function()
+      vim.g.rustaceanvim = function()
+        local navic = require("nvim-navic")
+        local inlayhint = require("lsp-inlayhints")
+        local keys = require("keys")
+
+        return {
+          server = {
+            on_attach = function(client, bufnr)
+              -- you can also put keymaps in here
+              keys(client, bufnr)
+              navic.attach(client, bufnr)
+              inlayhint.on_attach(client, bufnr, false)
+            end,
+          },
+        }
+      end
+    end,
+  }
 }

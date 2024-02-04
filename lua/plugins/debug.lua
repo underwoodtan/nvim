@@ -43,14 +43,24 @@ return {
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
       { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
       { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      -- { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
     },
   },
   {
     "rcarriga/nvim-dap-ui",
     opts = {},
     keys = {
-      { "<leader>d", function () require("dapui").toggle() end, desc = "Toggle Dap UI" }
+      { "<leader>du", function () require("dapui").toggle() end, desc = "Toggle Dap UI" },
+      { "<leader>dv", function () require("dapui").eval() end, desc = "Toggle Dap UI" },
+      { "<leader>dwa", function () require("dapui").elements.watches.add() end, desc = "Toggle Watch Add" },
+      { "<leader>dwd", function () require("dapui").elements.watches.remove() end, desc = "Toggle Watch Delate" },
     }
   },
+  {
+    "mfussenegger/nvim-dap",
+    keys = {
+      { "<leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "Toggle Dap Breakpoint" },
+      { "<leader>dc", "<cmd>DapContinue<CR>", desc = "Dap Continue" },
+    }
+  }
 }

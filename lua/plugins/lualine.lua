@@ -16,11 +16,8 @@ return {
       return {
         options = {
           theme = "auto",
-          globalstatus = true,
           disabled_filetypes = {
-            statusline = { "dashboard", "lazy", "alpha",
-              'dap-repl', 'dapui_console', 'dapui_watches',
-              'dapui_stacks', 'dapui_breakpoints', 'dapui_scopes' }
+            statusline = { "dashboard", "lazy", "alpha"}
           },
         },
         sections = {

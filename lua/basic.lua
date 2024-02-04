@@ -80,23 +80,23 @@ vim.o.showmode = false
 -- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
 ---WORKAROUND
-vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
   group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
   callback = function()
-    vim.opt.foldmethod     = 'expr'
-    vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+    vim.opt.foldmethod = 'expr'
+    vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
   end
 })
 ---ENDWORKAROUND
 ---
 local icons = require("icons")
 vim.diagnostic.config({
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
-            [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
-            [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
-            [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
-        },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+      [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+      [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+      [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
     },
+  },
 })

@@ -23,6 +23,8 @@ map("n", "<C-Up>", ":resize -2<CR>", opt)
 -- 上下滚动浏览
 map("n", "<C-j>", "4j", opt)
 map("n", "<C-k>", "4k", opt)
+map("v", "<C-j>", "4j", opt)
+map("v", "<C-k>", "4k", opt)
 -- 上下移动选中文本
 map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
@@ -43,3 +45,9 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'f', '<Plug>(leap-forward-to)')
 vim.keymap.set({ 'n', 'x', 'o' }, 'F', '<Plug>(leap-backward-to)')
 -- Mappings.
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, {desc = "open lsp diagnostic info"})
+
+--move cursor window
+map("n", "<A-Left>",  "<C-w>h", opt)
+map("n", "<A-Right>", "<C-w>l", opt)
+map("n", "<A-Down>",  "<C-w>j", opt)
+map("n", "<A-Up>",    "<C-w>k", opt)
