@@ -7,19 +7,19 @@ vim.g.maplocalleader = " "
 --Normal
 -- 取消 s 默认功能
 map("n", "s", "", opt)
-map("n", "sa", ":Translate<CR>", opt)
+map("n", "sa", "<cmd>Translate<CR>", opt)
 -- windows 分屏快捷键
-map("n", "sv", ":vsp<CR>", opt)
-map("n", "sh", ":sp<CR>", opt)
+map("n", "sv", "<cmd>vsp<CR>", opt)
+map("n", "sh", "<cmd>sp<CR>", opt)
 -- 关闭当前
 map("n", "sd", "<C-w>c", opt)
 -- 关闭其他
 map("n", "so", "<C-w>o", opt)
 --窗口比例控制
-map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
-map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
-map("n", "<C-Down>", ":resize +2<CR>", opt)
-map("n", "<C-Up>", ":resize -2<CR>", opt)
+map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", opt)
+map("n", "<C-Right>","<cmd>vertical resize +2<CR>", opt)
+map("n", "<C-Down>", "<cmd>resize +2<CR>", opt)
+map("n", "<C-Up>",   "<cmd>resize -2<CR>", opt)
 -- 上下滚动浏览
 map("n", "<C-j>", "4j", opt)
 map("n", "<C-k>", "4k", opt)
@@ -36,9 +36,9 @@ map("t", "<Esc>", "<C-\\><C-n>", opt)
 -- bufferline
 map("n", "J", "", opt)
 map("n", "K", "", opt)
-map("n", "J", ":BufferLineCyclePrev<CR>", opt)
-map("n", "K", ":BufferLineCycleNext<CR>", opt)
-map("n", "sc", ":bdelete!<CR>", opt)
+map("n", "J", "<cmd>BufferLineCyclePrev<CR>", opt)
+map("n", "K", "<cmd>BufferLineCycleNext<CR>", opt)
+map("n", "sc", "<cmd>bdelete!<CR>", opt)
 
 --leap
 vim.keymap.set({ 'n', 'x', 'o' }, 'f', '<Plug>(leap-forward-to)')
