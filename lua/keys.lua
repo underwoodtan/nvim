@@ -17,7 +17,7 @@ end
   map('n', "gd", "<cmd>Telescope lsp_definitions<cr>", "Goto Definition" )
   map('n', "gr", "<cmd>Telescope lsp_references<cr>", "References" )
   map('n', "gD", vim.lsp.buf.declaration, "Goto Declaration" )
-  map('n', "gI", "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation" )
+  map('n', "gi", "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation" )
   map('n', "gt", "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definition" )
   map('n', 'H', vim.lsp.buf.hover, "Hover")
   map({ 'n', 'i' }, '<C-h>', vim.lsp.buf.signature_help, "signature_help")
