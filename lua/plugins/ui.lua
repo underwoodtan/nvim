@@ -48,13 +48,6 @@ return {
       }
     end,
   },
-  {
-    "lvimuser/lsp-inlayhints.nvim",
-    event = "LspAttach",
-    branch = "anticonceal",
-    opts = {
-    }
-  },
   -- better notify message
   {
     "folke/noice.nvim",
