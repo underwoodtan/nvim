@@ -72,7 +72,7 @@ return {
     keys         = {
       { "<C-f>", "<cmd>Telescope live_grep<CR>",  desc = "" },
       { "<C-p>", "<cmd>Telescope find_files<CR>", desc = "" },
-      { "<C-c>", "<cmd>Telescope commands<CR>",   desc = "" },
+      { "<M-c>", "<cmd>Telescope commands<CR>",   desc = "" },
       { "<M-p>", "<cmd>Telescope ctags_outline<CR>",   desc = "" },
     },
     config       = function(_,opts)
