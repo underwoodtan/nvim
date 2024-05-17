@@ -24,11 +24,9 @@ return {
     config = function(_, opts)
       local servers = { "lua_ls", "clangd", "pyright", "zls" }
       local lspconfig = require("lspconfig")
-      local navic = require("nvim-navic")
       local keys = require("keys")
       local on_attach = function(client, bufnr)
         keys(client, bufnr)
-        navic.attach(client, bufnr)
       end
       -- diagnostics
       for name, icon in pairs(require("icons").diagnostics) do
@@ -96,17 +94,9 @@ return {
         end,
         group = nvim_metals_group,
       })
-      vim.api.nvim_create_autocmd({ "FileType", "LspAttach" }, {
-        pattern = { "scala", "sbt", "java" },
-        callback = function(args)
-          local buffer = args.buf
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          local keys = require("keys")
-          local navic = require("nvim-navic")
-          navic.attach(client, buffer)
-          keys(client, buffer)
-        end,
-      })
+      metals_config.on_attach = function(client, bufnr)
+        require("keys")(client,bufnr)
+      end
     end,
   },
   {
@@ -115,7 +105,6 @@ return {
     ft = { 'rust' },
     config = function()
       vim.g.rustaceanvim = function()
-        local navic = require("nvim-navic")
         local keys = require("keys")
 
         return {
@@ -123,7 +112,6 @@ return {
             on_attach = function(client, bufnr)
               -- you can also put keymaps in here
               keys(client, bufnr)
-              navic.attach(client, bufnr)
             end,
           },
         }
