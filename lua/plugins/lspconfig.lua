@@ -112,6 +112,7 @@ return {
             on_attach = function(client, bufnr)
               -- you can also put keymaps in here
               keys(client, bufnr)
+              vim.keymap.set('n', '<leader>rm', '<cmd>RustLsp expandMacro<CR>',{ buffer = bufnr, desc = " Rust expandMacro" })
             end,
           },
         }

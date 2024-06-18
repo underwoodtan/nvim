@@ -222,4 +222,7 @@ return {
   {
     "fcying/telescope-ctags-outline.nvim",
   },
+  {
+    'famiu/bufdelete.nvim',
+  }
 }

@@ -16,10 +16,10 @@ map("n", "sd", "<C-w>c", opt)
 -- 关闭其他
 map("n", "so", "<C-w>o", opt)
 --窗口比例控制
-map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", opt)
-map("n", "<C-Right>","<cmd>vertical resize +2<CR>", opt)
-map("n", "<C-Down>", "<cmd>resize +2<CR>", opt)
-map("n", "<C-Up>",   "<cmd>resize -2<CR>", opt)
+map("n", "<C-Left>", "<cmd>vertical resize +2<CR>", opt)
+map("n", "<C-Right>","<cmd>vertical resize -2<CR>", opt)
+map("n", "<C-Up>",   "<cmd>resize +2<CR>", opt)
+map("n", "<C-Down>", "<cmd>resize -2<CR>", opt)
 -- 上下滚动浏览
 map("n", "<C-j>", "4j", opt)
 map("n", "<C-k>", "4k", opt)

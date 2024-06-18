@@ -12,5 +12,6 @@ return {
   { "kepano/flexoki-neovim" },
   { 'AlexvZyl/nordic.nvim' },
   { 'tiagovla/tokyodark.nvim', },
-  { "savq/melange-nvim" }
+  { "savq/melange-nvim" },
+  { "ellisonleao/gruvbox.nvim" }
 }
