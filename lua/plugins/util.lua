@@ -210,7 +210,8 @@ return {
   {
     "nvim-neorg/neorg",
     dependencies = { "luarocks.nvim" },
-    event = "VeryLazy",
+    ft = {"norg"},
+    cmd = "Neorg",
     version = "*",
     config = function()
       require("neorg").setup {
