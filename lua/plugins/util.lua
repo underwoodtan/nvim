@@ -70,12 +70,12 @@ return {
     cmd          = "Telescope",
     version      = false,
     keys         = {
-      { "<C-f>", "<cmd>Telescope live_grep<CR>",  desc = "" },
-      { "<C-p>", "<cmd>Telescope find_files<CR>", desc = "" },
-      { "<M-c>", "<cmd>Telescope commands<CR>",   desc = "" },
-      { "<M-p>", "<cmd>Telescope ctags_outline<CR>",   desc = "" },
+      { "<C-f>", "<cmd>Telescope live_grep<CR>",     desc = "" },
+      { "<C-p>", "<cmd>Telescope find_files<CR>",    desc = "" },
+      { "<M-c>", "<cmd>Telescope commands<CR>",      desc = "" },
+      { "<M-p>", "<cmd>Telescope ctags_outline<CR>", desc = "" },
     },
-    config       = function(_,opts)
+    config       = function(_, opts)
       require("telescope").setup(opts)
       require('telescope').load_extension('projects')
       require("telescope").load_extension("notify")
@@ -151,11 +151,15 @@ return {
     opts = {}
   },
   {
-    'simrat39/symbols-outline.nvim',
-    opts = {},
-    keys = {
-      { '<leader>S', '<cmd>SymbolsOutline<CR>', desc = "symbols" }
-    }
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    keys = { -- Example mapping to toggle outline
+      { "<leader>S", "<cmd>Outline<CR>", desc = "Toggle outline" },
+    },
+    opts = {
+      -- Your setup opts here
+    },
   },
   {
     'ahmedkhalf/project.nvim',
@@ -193,30 +197,38 @@ return {
   },
   {
     "ludovicchabant/vim-gutentags",
-    config = function ()
+    config = function()
       vim.g.gutentags_ctags_tagfile = ".tags"
-      vim.g.gutentags_cache_dir =  "/home/txz/.cache/tags"
+      vim.g.gutentags_cache_dir = "/home/txz/.cache/tags"
     end
   },
   {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
+  {
     "nvim-neorg/neorg",
-    cmd = "Neorg",
-    build = ":Neorg sync-parsers",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = { "luarocks.nvim" },
+    version = "*",
     config = function()
       require("neorg").setup {
         load = {
-          ["core.defaults"] = {},  -- Loads default behaviour
-          ["core.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.dirman"] = {      -- Manages Neorg workspaces
+          ["core.defaults"] = {},
+          ["core.concealer"] = {},
+          ["core.dirman"] = {
             config = {
               workspaces = {
                 notes = "~/notes",
               },
+              default_workspace = "notes",
             },
           },
         },
       }
+
+      vim.wo.foldlevel = 99
+      vim.wo.conceallevel = 2
     end,
   },
   {

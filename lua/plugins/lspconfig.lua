@@ -22,7 +22,7 @@ return {
     },
     ---@param opts PluginLspOpts
     config = function(_, opts)
-      local servers = { "lua_ls", "clangd", "pyright", "zls" }
+      local servers = { "lua_ls", "clangd", "pylsp", "zls" }
       local lspconfig = require("lspconfig")
       local keys = require("keys")
       local on_attach = function(client, bufnr)
@@ -66,38 +66,40 @@ return {
         "lua_ls",
         "clangd",
         "rust_analyzer",
-        "pyright",
+        "pylsp",
         "codelldb"
       },
       auto_update = true,
       run_on_start = true,
-      start_delay = 3000,  -- 3 second delay
+      start_delay = 3000, -- 3 second delay
       debounce_hours = 0, -- at least 5 hours between attempts to install/update
     }
   },
   {
-    'scalameta/nvim-metals',
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
+    "scalameta/nvim-metals",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    ft = { "scala", "sbt", "java" },
+    opts = function()
       local metals_config = require("metals").bare_config()
-      metals_config.settings = {
-        showImplicitArguments = true,
-        excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
-      }
-      metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
-      -- Autocmd that will actually be in charging of starting the whole thing
+      metals_config.on_attach = function(client, bufnr)
+        -- your on_attach function
+        require("keys")(client, bufnr)
+      end
+
+      return metals_config
+    end,
+    config = function(self, metals_config)
       local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "scala", "sbt", "java" },
+        pattern = self.ft,
         callback = function()
           require("metals").initialize_or_attach(metals_config)
         end,
         group = nvim_metals_group,
       })
-      metals_config.on_attach = function(client, bufnr)
-        require("keys")(client,bufnr)
-      end
-    end,
+    end
   },
   {
     'mrcjkb/rustaceanvim',
@@ -112,7 +114,8 @@ return {
             on_attach = function(client, bufnr)
               -- you can also put keymaps in here
               keys(client, bufnr)
-              vim.keymap.set('n', '<leader>rm', '<cmd>RustLsp expandMacro<CR>',{ buffer = bufnr, desc = " Rust expandMacro" })
+              vim.keymap.set('n', '<leader>rm', '<cmd>RustLsp expandMacro<CR>',
+                { buffer = bufnr, desc = " Rust expandMacro" })
             end,
           },
         }
