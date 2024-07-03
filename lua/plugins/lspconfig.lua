@@ -59,6 +59,7 @@ return {
   },
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
+    event = "VeryLazy",
     opts = {
       -- a list of all tools you want to ensure are installed upon
       -- start
