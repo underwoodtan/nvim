@@ -23,15 +23,18 @@ return {
     config = function(_, opts)
       local wk = require("which-key")
       wk.setup(opts)
-      local keymaps = {
-        mode = { "n", "v" },
-        ["<leader>x"] = { name = "+trouble" },
-        ["g"] = { name = "+goto" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["<leader>g"] = { name = "+git" },
+      local keymaps =
+      {
+        {
+          mode = { "n", "v" },
+          { "<leader>g", group = "git" },
+          { "<leader>x", group = "trouble" },
+          { "[", group = "prev" },
+          { "]", group = "next" },
+          { "g", group = "goto" },
+        },
       }
-      wk.register(keymaps)
+      wk.add(keymaps)
     end,
   },
   {
